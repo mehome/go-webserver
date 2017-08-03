@@ -16,6 +16,10 @@ type Greeting struct {
 	Two     string   `xml:"two,attr"`
 }
 
+// Note: You can set the system environment variables
+// "MARTINI_ENV" to "production", default value is "development".
+// See: /martini/env.go
+
 func api2(res http.ResponseWriter, req *http.Request) {
 	html := "Hello world! /api"
 	slice := make([]byte, len(html))
