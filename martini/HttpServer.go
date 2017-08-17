@@ -56,7 +56,7 @@ func getBooks(r render.Render, params martini.Params, req *http.Request) {
 	r.Text(200, "/Books, action = get, id = " + params["id"])
 }
 
-func newBook(r render.Render) {
+func newBook(r render.Render, params martini.Params, req *http.Request) {
 	r.Text(200, "/Books, action = new")
 }
 
