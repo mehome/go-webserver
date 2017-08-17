@@ -53,7 +53,7 @@ func text(r render.Render) {
 }
 
 func getBooks(r render.Render, params martini.Params, req *http.Request) {
-	r.Text(200, "/Books, action = get, id = ", params["id"])
+	r.Text(200, "/Books, action = get, id = " + params["id"])
 }
 
 func newBook(r render.Render) {
@@ -61,11 +61,11 @@ func newBook(r render.Render) {
 }
 
 func updateBook(r render.Render, params martini.Params, req *http.Request) {
-	r.Text(200, "/Books, action = update, id = ", params["id"])
+	r.Text(200, "/Books, action = update, id = " + params["id"])
 }
 
 func deleteBook(r render.Render, params martini.Params, req *http.Request) {
-	r.Text(200, "/Books, action = delete, id = ", params["id"])
+	r.Text(200, "/Books, action = delete, id = " + params["id"])
 }
 
 func main() {
