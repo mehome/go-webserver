@@ -10,14 +10,11 @@
 </head>
 <script language="javascript">
 function newBooks() {
-	alert("newBooks!!")
 	if (document.all) {
-		//document.all["newbook"].submit();
-		$("newbook").submit();
+		document.all["newbook"].submit();
 	} else {
 		$("newbook").submit();
 	}
-	alert("newBooks!!")
 }
 function updateBooks() {
 	if (document.all) {
@@ -70,9 +67,9 @@ Group test links:<br/>
 <a href="/books">/books</a><br/>
 <a href="/books/123">/books/123</a><br/>
 <br/>
-<form id="newbook" name="newbook" action="/books/new" method="post"><a href="javascript:newBooks();">/books/new</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
-<form id="updatebook" name="newbook" action="/books/update/123" method="put"><a href="javascript:void(0);" onclick="javascript:updateBooks();">/books/update/123</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
-<form id="deletebook" name="newbook" action="/books/delete/123" method="delete"><a href="javascript:void(0);" onclick="javascript:deleteBooks();">/books/delete/123</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
+<form id="newbook" name="newbook" action="/books/new" method="post"><a href="javascript:form.submit();">/books/new</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
+<form id="updatebook" name="newbook" action="/books/update/123" method="put"><a href="javascript:form.submit();" onclick="javascript:updateBooks();">/books/update/123</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
+<form id="deletebook" name="newbook" action="/books/delete/123" method="delete"><a href="javascript:form.submit();" onclick="javascript:deleteBooks();">/books/delete/123</a> &nbsp; &nbsp;<input type="submit" value="提交" /></form><br/>
 <br/>
 ------------------------------------------------------<br/>
 <br/>
