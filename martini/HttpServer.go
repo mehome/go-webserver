@@ -49,23 +49,23 @@ func xmlfunc(r render.Render) {
 
 // This will set the Content-Type header to "text/plain; charset=UTF-8"
 func text(r render.Render) {
-	r.Text(200, "hello, world")
+	r.Text(200, "This is a text format file. 'text/plain; charset=UTF-8'")
 }
 
-func getBooks(r render.Render) {
-
+func getBooks(r render.Render, params martini.Params) {
+	r.Text(200, "/Books, action = get, id = ", params["id"])
 }
 
 func newBook(r render.Render) {
-
+	r.Text(200, "/Books, action = new")
 }
 
-func updateBook(r render.Render) {
-
+func updateBook(r render.Render, params martini.Params) {
+	r.Text(200, "/Books, action = update, id = ", params["id"])
 }
 
-func deleteBook(r render.Render) {
-
+func deleteBook(r render.Render, params martini.Params) {
+	r.Text(200, "/Books, action = delete, id = ", params["id"])
 }
 
 func main() {
@@ -84,7 +84,7 @@ func main() {
 	app.Use(martini.Static("static"))
 
 	static := martini.Static("static", martini.StaticOptions{
-		IndexFile: "index.html", // Web defualt doucment filename
+		IndexFile: "index.html", // Web default doucment filename
 		Fallback:  "/404.html",  // Not found page filename
 		Exclude:   "/api/v",     // Exclude path
 	})
