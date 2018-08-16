@@ -25,7 +25,13 @@ func getMilliSeconds(startTime time.Time, stopTime time.Time) float64 {
 	return float64(stopTime.Sub(startTime).Nanoseconds()) / 1000000
 }
 
-func Test_Routing() {
+func getSeconds(startTime time.Time, stopTime time.Time) float64 {
+	// Returns the elapsed stopwatch time in milliseconds
+	// time.Duration
+	return float64(stopTime.Sub(startTime).Nanoseconds()) / 1000000000
+}
+
+func Benchmark_Routing() {
 	/*
 		app := martini.Classic()
 
@@ -84,12 +90,19 @@ func Test_Routing() {
 		{"GET", "/another_file.jpeg", martini.ExactMatch},
 	}
 
+	for i, r := range router.GetAllRoutes() {
+		fmt.Printf("[%3d]: %-20s %-8s %-30s\n", i,
+			r.GetName(), r.Method(), r.Pattern())
+	}
+	fmt.Printf("\n")
+
 	for _, urls := range testUrls {
 		matched := false
 		for _, route := range router.GetAllRoutes() {
 			match, params := route.Match(urls.method, urls.path)
 			if match != martini.NoMatch {
-				fmt.Printf("Matched: (%v, %-26v) - (%v), (%v)\n", urls.method, urls.path, match, params)
+				fmt.Printf("Matched: (%v, %-26v) - (%v), (%v)\n",
+					urls.method, urls.path, match, params)
 				matched = true
 				break
 			}
@@ -100,7 +113,7 @@ func Test_Routing() {
 	}
 	fmt.Printf("\n")
 
-	kMaxIterators := 2000000
+	kMaxIterators := 1000000
 
 	startTotalTime := time.Now()
 	for _, urls := range testUrls {
@@ -121,17 +134,16 @@ func Test_Routing() {
 		stopTime := time.Now()
 		elapsedTime := getMilliSeconds(startTime, stopTime)
 
-		fmt.Printf("Matched: (%v, %-26v) - (%10v), (%v ms)\n", urls.method, urls.path, userRouted, elapsedTime)
-		//fmt.Printf("userRouted = %v\n", userRouted)
-		//fmt.Printf("elapsed time: %0.3v ms\n", elapsedTime)
+		fmt.Printf("Matched: (%s, %-26s) - (%10d), (%9.3f ms)\n",
+			urls.method, urls.path, userRouted, elapsedTime)
 	}
 	fmt.Printf("\n")
 
 	stopTotalTime := time.Now()
 	totalElapsedTime := getMilliSeconds(startTotalTime, stopTotalTime)
 
-	fmt.Printf("userRouted = %v\n", userRouted)
-	fmt.Printf("Total elapsed time: %0.3v ms\n", totalElapsedTime)
+	fmt.Printf("userRouted = %d\n\n", userRouted)
+	fmt.Printf("Total elapsed time: %9.3f second(s)\n", totalElapsedTime)
 }
 
 // Note: You can set the system environment variables
@@ -245,7 +257,7 @@ func main() {
 		r.Delete("/delete/:id", deleteBook)
 	})
 
-	Test_Routing()
+	Benchmark_Routing()
 
 	//app.RunOnAddr(":8080")
 }
