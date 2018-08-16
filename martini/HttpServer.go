@@ -8,8 +8,8 @@ import (
 
 	//"github.com/bradhe/stopwatch"
 	//"github.com/odysseus/stopwatch"
-	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
+	"github.com/shines77/martini"
 )
 
 // Greeting: XML demo
@@ -143,7 +143,7 @@ func Benchmark_Routing() {
 	totalElapsedTime := getSeconds(startTotalTime, stopTotalTime)
 
 	fmt.Printf("userRouted = %d\n\n", userRouted)
-	fmt.Printf("Total elapsed time: %9.3f second(s)\n", totalElapsedTime)
+	fmt.Printf("Total elapsed time: %7.3f second(s)\n", totalElapsedTime)
 }
 
 // Note: You can set the system environment variables
