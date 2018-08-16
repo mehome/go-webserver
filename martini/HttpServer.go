@@ -140,7 +140,7 @@ func Benchmark_Routing() {
 	fmt.Printf("\n")
 
 	stopTotalTime := time.Now()
-	totalElapsedTime := getMilliSeconds(startTotalTime, stopTotalTime)
+	totalElapsedTime := getSeconds(startTotalTime, stopTotalTime)
 
 	fmt.Printf("userRouted = %d\n\n", userRouted)
 	fmt.Printf("Total elapsed time: %9.3f second(s)\n", totalElapsedTime)
